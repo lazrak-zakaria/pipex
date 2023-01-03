@@ -1,5 +1,0 @@
-  PID TTY           TIME CMD
-14452 ttys000    0:01.00 -zsh
-32811 ttys000    0:00.03 vi ostep.txt
-15889 ttys001    0:03.11 /bin/zsh -il
-38967 ttys001    0:00.00 ./pipex poo ps cat oop
