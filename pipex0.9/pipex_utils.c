@@ -6,7 +6,7 @@
 /*   By: zlazrak <zlazrak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 11:51:37 by zlazrak           #+#    #+#             */
-/*   Updated: 2023/01/04 14:18:28 by zlazrak          ###   ########.fr       */
+/*   Updated: 2023/01/04 16:59:41 by zlazrak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_check_path(char **v_av, char **env)
 		execve(v_av[0], v_av, env);
 	perror("Error");
 	ft_mem_free(v_av);
-	exit(127);
+	exit(EXIT_FAILURE);
 }
 
 void	ft_print_error(char **a, char **b, char *c)
@@ -27,7 +27,7 @@ void	ft_print_error(char **a, char **b, char *c)
 	ft_mem_free(b);
 	if (*c)
 		write(2, c, ft_strlen(c));
-	exit(127);
+	exit(EXIT_FAILURE);
 }
 
 char	*ft_get_access_cmd(char **v_arr)

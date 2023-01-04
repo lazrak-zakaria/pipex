@@ -6,7 +6,7 @@
 /*   By: zlazrak <zlazrak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 11:49:16 by zlazrak           #+#    #+#             */
-/*   Updated: 2023/01/04 14:13:06 by zlazrak          ###   ########.fr       */
+/*   Updated: 2023/01/04 16:51:35 by zlazrak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,7 @@ void	ft_first(char **av, char **env, int *pfd)
 
 	fd = here_doc(av, &i);
 	if (fd < 0)
-	{
-		perror("Error");
-		exit(1);
-	}
+		ft_error();
 	close(pfd[0]);
 	check_dup2(fd, 0, pfd, 1);
 	close(fd);
@@ -42,12 +39,13 @@ void	ft_second(int ac, char **av, char **env, int *pfd)
 		i = 3;
 	while (++i < ac - 1)
 	{
-		pipe(pfd);
+		if(pipe(pfd))
+			ft_error();
 		pid = fork();
+		if (pid < 0)
+			ft_error();
 		if (!pid)
-		{
 			ft_third(ac, &arg, pfd, i);
-		}
 		else
 		{
 			wait(0);
@@ -73,13 +71,11 @@ void	ft_pipex_bonus(int ac, char **av, char **env)
 	int		pipe_fd[2];
 	pid_t	pid;
 
-	pipe(pipe_fd);
+	if (pipe(pipe_fd))
+		ft_error();
 	pid = fork();
 	if (pid < 0)
-	{
-		perror("Error");
-		exit(EXIT_FAILURE);
-	}
+		ft_error();
 	else if (!pid)
 		ft_first(av, env, pipe_fd);
 	else

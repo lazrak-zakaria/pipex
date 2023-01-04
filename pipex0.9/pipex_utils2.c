@@ -33,7 +33,7 @@ void	ft_exec(char **av, char **env, int i)
 		ft_check_path(v_av, env);
 	v_cmd = ft_get_cmd(env, v_av[0], v_av);
 	execve(v_cmd, v_av, env);
-	perror("Error")
+	perror("Error");
 	ft_mem_free(v_av);
 	free(v_cmd);
 }

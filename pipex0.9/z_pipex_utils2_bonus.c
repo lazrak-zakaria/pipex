@@ -6,7 +6,7 @@
 /*   By: zlazrak <zlazrak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 11:50:10 by zlazrak           #+#    #+#             */
-/*   Updated: 2023/01/04 14:13:49 by zlazrak          ###   ########.fr       */
+/*   Updated: 2023/01/04 16:49:33 by zlazrak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,4 +74,10 @@ void	ft_exec(char **av, char **env, int i)
 	perror("Error");
 	ft_mem_free(v_av);
 	free(v_cmd);
+}
+
+void	ft_error()
+{
+	perror("Error");
+	exit(EXIT_FAILURE);
 }

@@ -6,7 +6,7 @@
 /*   By: zlazrak <zlazrak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 11:49:25 by zlazrak           #+#    #+#             */
-/*   Updated: 2023/01/01 15:11:15 by zlazrak          ###   ########.fr       */
+/*   Updated: 2023/01/04 16:56:44 by zlazrak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,5 @@ int		here_doc(char **av, int *i);
 void	ft_final_cmd(int ac, char **av, int *pfd, int i);
 void	check_dup2(int fd, int std_fd, int *p_pipe, int std_fd_pipe);
 void	ft_third(int ac, t_arg *arg, int*pfd, int i);
-
+void	ft_error();
 #endif
