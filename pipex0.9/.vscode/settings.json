@@ -1,0 +1,6 @@
+{
+	"C_Cpp.errorSquiggles": "disabled",
+	"files.associations": {
+		"z_pipex_bonus.h": "c"
+	}
+}
