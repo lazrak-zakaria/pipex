@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex_utils_bonus.c                                :+:      :+:    :+:   */
+/*   w_pipex_utils_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zlazrak <zlazrak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 11:49:36 by zlazrak           #+#    #+#             */
-/*   Updated: 2023/01/01 14:46:54 by zlazrak          ###   ########.fr       */
+/*   Updated: 2023/01/05 11:42:48 by zlazrak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex_bonus.h"
+#include "w_pipex_bonus.h"
 
 void	ft_check_path(char **v_av, char **env)
 {
@@ -18,7 +18,7 @@ void	ft_check_path(char **v_av, char **env)
 		execve(v_av[0], v_av, env);
 	perror("Error");
 	ft_mem_free(v_av);
-	exit(127);
+	exit(EXIT_FAILURE);
 }
 
 void	ft_print_error(char **a, char **b, char *c)
@@ -27,7 +27,7 @@ void	ft_print_error(char **a, char **b, char *c)
 	ft_mem_free(b);
 	if (*c)
 		write(2, c, ft_strlen(c));
-	exit(127);
+	exit(EXIT_FAILURE);
 }
 
 char	*ft_get_access_cmd(char **v_arr)
@@ -78,7 +78,7 @@ char	*ft_get_cmd(char **env, char *cmd, char **v_av)
 		if (ft_cmp(env[i], "PATH", 4))
 			v_arr = ft_split(env[i] + 5, ':');
 	if (!v_arr)
-		ft_print_error(v_arr, v_av, "Error: PATH/command not found\n");
+		ft_print_error(v_arr, v_av, "Error: command not found\n");
 	if (!ft_join_cmd(v_arr, cmd))
 		ft_print_error(v_arr, v_av, "");
 	answer = ft_get_access_cmd(v_arr);

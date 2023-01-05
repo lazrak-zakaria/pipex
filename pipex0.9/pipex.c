@@ -6,7 +6,7 @@
 /*   By: zlazrak <zlazrak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 11:51:21 by zlazrak           #+#    #+#             */
-/*   Updated: 2023/01/04 13:23:28 by zlazrak          ###   ########.fr       */
+/*   Updated: 2023/01/05 11:49:24 by zlazrak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	ft_child(char **av, char **env, int *pfd)
 	check_dup2(pfd, 1);
 	ft_exec(av, env, 2);
 }
-
 
 void	ft_parent(char **av, char **env, int *pfd)
 {
@@ -51,21 +50,14 @@ void	ft_pipex(char **av, char **env)
 		ft_error();
 	else if (!pid)
 		ft_child(av, env, pipe_fd);
-	else
-	{
-		wait(NULL);
-		close(pipe_fd[1]);
-		pid = fork();
-		if (pid < 0)
-			ft_error();
-		else if (!pid)
-			ft_parent(av, env, pipe_fd);
-		else
-		{
-			wait(NULL);
-			close(pipe_fd[0]);
-		}
-	}
+	close(pipe_fd[1]);
+	pid = fork();
+	if (pid < 0)
+		ft_error();
+	else if (!pid)
+		ft_parent(av, env, pipe_fd);
+	wait(NULL);
+	wait(NULL);
 }
 
 int	main(int ac, char **av, char **env)

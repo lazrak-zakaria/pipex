@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex_bonus.h                                      :+:      :+:    :+:   */
+/*   w_pipex_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zlazrak <zlazrak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 11:49:25 by zlazrak           #+#    #+#             */
-/*   Updated: 2023/01/01 09:40:54 by zlazrak          ###   ########.fr       */
+/*   Updated: 2023/01/05 12:02:34 by zlazrak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_BONUS_H
+#ifndef W_PIPEX_BONUS_H
 
-# define PIPEX_BONUS_H
+# define W_PIPEX_BONUS_H
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
@@ -42,9 +42,9 @@ int		ft_stdin_to_file(int fd, char *limit);
 int		ft_sub_s_to_f(int fd, char *limit, char *t, char *s);
 
 void	ft_exec(char **av, char **env, int i);
-int	here_doc(char **av, int *i);
+int		here_doc(char **av, int *i);
 void	ft_final_cmd(int ac, char **av, int *pfd, int i);
 void	check_dup2(int fd, int std_fd, int *p_pipe, int std_fd_pipe);
 void	ft_third(int ac, t_arg *arg, int*pfd, int i);
-
+void	ft_error(void);
 #endif

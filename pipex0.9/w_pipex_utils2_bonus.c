@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   z_pipex_utils2_bonus.c                             :+:      :+:    :+:   */
+/*   w_pipex_utils2_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zlazrak <zlazrak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 11:50:10 by zlazrak           #+#    #+#             */
-/*   Updated: 2023/01/04 16:49:33 by zlazrak          ###   ########.fr       */
+/*   Updated: 2023/01/05 11:55:16 by zlazrak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex_bonus.h"
+#include "w_pipex_bonus.h"
 
 void	check_dup2(int fd, int std_fd, int *p_pipe, int std_fd_pipe)
 {
 	if ((dup2(fd, std_fd) < 0) || (dup2(p_pipe[std_fd_pipe], std_fd_pipe) < 0))
 	{
-		write(2, "dup2 Error \n", 12);
+		perror("Dup2");
 		exit(EXIT_FAILURE);
 	}
 }
@@ -49,13 +49,9 @@ void	ft_final_cmd(int ac, char **av, int *pfd, int i)
 		else
 			pfd[1] = open(av[ac - 1], O_WRONLY | O_CREAT | O_TRUNC, 0644);
 		if (pfd[1] < 0)
-		{
-			perror("Error");
-			exit(1);
-		}
+			ft_error();
 	}
 }
-
 
 void	ft_exec(char **av, char **env, int i)
 {
@@ -76,7 +72,7 @@ void	ft_exec(char **av, char **env, int i)
 	free(v_cmd);
 }
 
-void	ft_error()
+void	ft_error(void)
 {
 	perror("Error");
 	exit(EXIT_FAILURE);

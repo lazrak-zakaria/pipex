@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   z_pipex_bonus.c                                    :+:      :+:    :+:   */
+/*   w_pipex_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zlazrak <zlazrak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 11:49:16 by zlazrak           #+#    #+#             */
-/*   Updated: 2023/01/04 16:51:35 by zlazrak          ###   ########.fr       */
+/*   Updated: 2023/01/05 12:03:45 by zlazrak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex_bonus.h"
+#include "w_pipex_bonus.h"
 
 void	ft_first(char **av, char **env, int *pfd)
 {
@@ -39,20 +39,17 @@ void	ft_second(int ac, char **av, char **env, int *pfd)
 		i = 3;
 	while (++i < ac - 1)
 	{
-		if(pipe(pfd))
+		if (pipe(pfd))
 			ft_error();
 		pid = fork();
 		if (pid < 0)
 			ft_error();
 		if (!pid)
 			ft_third(ac, &arg, pfd, i);
-		else
-		{
-			wait(0);
-			dup2(pfd[0], 0);
-			close(pfd[0]);
-			close(pfd[1]); //why because ine thne next fork i will read from the pipe  
-		}
+		wait(NULL);
+		dup2(pfd[0], 0);
+		close(pfd[0]);
+		close(pfd[1]);
 	}
 }
 

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   pipex_utils2.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zlazrak <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/05 12:04:39 by zlazrak           #+#    #+#             */
+/*   Updated: 2023/01/05 12:04:41 by zlazrak          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "pipex.h"
 
 void	check_dup2(int *p_pipe, int std_fd_pipe)
@@ -8,16 +20,6 @@ void	check_dup2(int *p_pipe, int std_fd_pipe)
 		exit(EXIT_FAILURE);
 	}
 }
-/*
-
-	// dup2(fd, 0);
-	// dup2(pfd[1], 1);  c
-
-	// dup2(fd, 1);
-	// dup2(pfd[0], 0);   p
-
-
-*/
 
 void	ft_exec(char **av, char **env, int i)
 {
@@ -38,7 +40,7 @@ void	ft_exec(char **av, char **env, int i)
 	free(v_cmd);
 }
 
-void	ft_error()
+void	ft_error(void)
 {
 	perror("Error");
 	exit(EXIT_FAILURE);
