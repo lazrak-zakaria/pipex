@@ -63,3 +63,15 @@ ft_third(ac, (av && env), pfd, i)
 		close (pfd);
 		ft_exec();
 }
+
+
+ft_stdin_to_file(fd , limit)
+{
+	join th limit with '\n';
+	allocat space in variable nnamed t;
+	call sub_s_to_file;
+		{
+			copy line by line to file ;
+			if you find line == limit stop;
+		}
+}
