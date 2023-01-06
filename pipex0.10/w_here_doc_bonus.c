@@ -6,7 +6,7 @@
 /*   By: zlazrak <zlazrak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 11:50:37 by zlazrak           #+#    #+#             */
-/*   Updated: 2023/01/05 11:21:48 by zlazrak          ###   ########.fr       */
+/*   Updated: 2023/01/06 12:17:12 by zlazrak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ int	ft_sub_s_to_f(int fd, char *limit, char *t, char *s)
 			if (ft_cmp(s, limit, ft_strlen(limit)))
 			{
 				free(t);
+				free(s);
 				return (1);
 			}
 			write(fd, s, ft_strlen(s));
