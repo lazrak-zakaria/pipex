@@ -6,7 +6,7 @@
 /*   By: zlazrak <zlazrak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 11:49:36 by zlazrak           #+#    #+#             */
-/*   Updated: 2023/01/06 11:51:13 by zlazrak          ###   ########.fr       */
+/*   Updated: 2023/01/11 19:02:29 by zlazrak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ char	**ft_join_cmd(char **v_arr, char *cmd)
 		tmp = ft_strjoin(v_arr[i], cmd);
 		if (!tmp)
 		{
-			free (tmp);
 			free (cmd);
 			return (ft_mem_free(v_arr));
 		}
