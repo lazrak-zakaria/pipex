@@ -6,7 +6,7 @@
 /*   By: zlazrak <zlazrak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 11:51:29 by zlazrak           #+#    #+#             */
-/*   Updated: 2023/01/01 09:28:23 by zlazrak          ###   ########.fr       */
+/*   Updated: 2023/01/21 10:51:28 by zlazrak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>
+# include <sys/wait.h> 
+# include <sys/types.h>
 
 char	*ft_strjoin(char *s1, char *s2);
 char	*ft_strdup(char *s);
@@ -31,5 +33,5 @@ char	*ft_get_cmd(char **env, char *cmd, char **v_av);
 void	ft_print_error(char **a, char **b, char *c);
 void	check_dup2(int *p_pipe, int std_fd_pipe);
 void	ft_exec(char **av, char **env, int i);
-
+void	ft_error(void);
 #endif
