@@ -6,7 +6,7 @@
 /*   By: zlazrak <zlazrak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 11:51:21 by zlazrak           #+#    #+#             */
-/*   Updated: 2023/01/21 10:44:31 by zlazrak          ###   ########.fr       */
+/*   Updated: 2023/02/17 14:50:34 by zlazrak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,11 @@ void	ft_child(char **av, char **env, int *pfd)
 {
 	int		fd;
 
-	close(0);
+	close(0);			/* 
+							don't close 0 if you want to pass this test 
+								 --> ./pipex /dev/stdin cat ls /dev/stdout		
+							 use dup2;
+						*/									
 	fd = open(av[1], O_RDONLY);
 	if (fd < 0)
 		ft_error();
@@ -31,7 +35,11 @@ void	ft_child_2(char **av, char **env, int *pfd)
 {
 	int		fd;
 
-	close(1);
+	close(1);			/* 
+							don't close 1 if you want to pass this test 
+								 --> ./pipex /dev/stdin cat ls /dev/stdout		
+							 use dup2;
+						*/					
 	fd = open(av[4], O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	if (fd < 0)
 		ft_error();
